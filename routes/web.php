@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\RouteCompiler;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::controller(AdminController::class)->group(function(){
+
+    Route::get('/posts', 'posts')->name('posts');
+    Route::post('/add-post', 'addpost')->name('add-post');
+    Route::get('/showposts', 'showposts')->name('showposts');
+});
