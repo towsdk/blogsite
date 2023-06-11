@@ -26,6 +26,7 @@ Route::get('/', [Homecontroller::class, 'homepage']);
 Route::get('/home', [Homecontroller::class, 'index'])->middleware('auth')->name('home');
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -40,4 +41,15 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/posts', 'posts')->name('posts');
     Route::post('/add-post', 'addpost')->name('add-post');
     Route::get('/showposts', 'showposts')->name('showposts');
+    Route::get('/deletepost/{id}', 'deletepost')->name('deletepost');
+    Route::get('/editpost/{id}', 'editpost')->name('editpost');
+    Route::post('/updatepost/{id}', 'updatepost')->name('updatepost');
+    Route::get('/active/{id}', 'active')->name('active');
+    Route::get('/reject/{id}', 'reject')->name('reject');
 });
+
+
+Route::get('/details/{id}', [Homecontroller::class, 'details'])->name('details');
+Route::get('/userpost', [Homecontroller::class, 'userpost'])->middleware('auth')->name('userpost');
+Route::post('/updateUserPost', [Homecontroller::class, 'updateUserPost'])->middleware('auth')->name('updateUserPost');
+Route::get('/mypost', [Homecontroller::class, 'mypost'])->middleware('auth')->name('mypost');

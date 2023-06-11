@@ -34,7 +34,6 @@
              <li><a href="about.html">About</a></li>
              <li><a href="services.html">Services</a></li>
              <li><a href="blog.html">Blog</a></li>
-             <li><a href="contact.html">Contact us</a></li>
             
                @if (Route::has('login'))
                 @auth
@@ -42,12 +41,15 @@
                   <x-app-layout>
                   </x-app-layout>
                 </li>
+                <li><a href="{{ route('mypost') }}">My Post</a></li>
+
+                <li><a href="{{ route('userpost') }}">Create Post</a></li>
                 @else
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
                 @endauth
                 
-             @endif
+               @endif
           </ul>
        </div>
     </div>
